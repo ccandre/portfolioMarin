@@ -1,11 +1,1128 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+import { Swiper, SwiperWrapper, SwiperSlide, SwiperButtonNext, SwiperButtonPrev } from "astro-swiper";
+import type { AstroSwiperType } from "astro-swiper";
+
+const astroSwiperOptions: AstroSwiperType = {
+  options: {
+    loop: true,
+	lazyPreload: true,
+	// grabCursor: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+	autoplay: {
+		delay: 2000,
+		disableOnInteraction: false,
+		waitForTransition: false,
+	},
+  },
+};
+
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- title shows on the browser tab and in Google results. -->
+		<title>Andre Marin | Software QA and implementation</title>
+		<meta
+			name="description"
+			content="Computer science graduate who builds web applications and tests them closely. Laravel, Vue.js, React."
+		/>
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+
+		<!-- Two Google Fonts: Bricolage Grotesque (headings) and Instrument Sans (body text). -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap"
+		/>
+	</head>
+
+	<body>
+		<!-- Lets keyboard users jump past the menu. -->
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<header class="site-header">
+			<div class="wrap bar">
+				<a class="brand" href={`${base}/`}>Andre Marin</a>
+				<nav aria-label="Main">
+					<ul>
+						<li><a href="#projects">Projects</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main id="main">
+			<!-- ===================== HERO ===================== -->
+			<section class="hero" aria-labelledby="hero-title">
+				<div class="wrap">
+					<h1 id="hero-title">Andre Marin</h1>
+					<p class="role">Software QA and implementation</p>
+					<p class="intro">
+						I am a computer science graduate who builds web applications and tests them closely. Currently learning Playwright.
+					</p>
+					<ul class="actions">
+						<li><a class="hbtn hbtn-solid" href="#projects">See projects</a></li>
+						<li><a class="hbtn hbtn-outline" href="#internship-tests">test</a></li>
+						<li><a class="hbtn hbtn-outline" href={`${base}/Andre Marin Resume.pdf`}>Download resume</a></li>
+						
+					</ul>
+				</div>
+			</section>
+
+			<!-- ===================== PROJECTS ===================== -->
+			<section id="projects" class="section" aria-labelledby="projects-title">
+				<div class="wrap">
+					<h2 id="projects-title">Projects</h2>
+					<p class="section-intro">
+						An internship project and my thesis.
+					</p>
+
+					<div class="project-list">
+						<article class="project" id="internship" aria-labelledby="internship-title">
+							<header>
+								<p class="kind">Internship project</p>
+								<h3 id="internship-title">911 Reports Dashboard</h3>
+							</header>
+
+							<div class="body">
+								<!-- Left column -->
+								<dl class="facts">
+									<div>
+										<dt>Role</dt>
+										<dd>Software Developer</dd>
+									</div>
+									<div>
+										<dt>Built with</dt>
+										<dd>
+											<ul class="stack">
+												<li>Laravel</li>
+												<li>Vue.js</li>
+												<li>MySQL</li>
+												<li>Axios</li>
+												<li>Tailwind CSS</li>
+											</ul>
+										</dd>
+									</div>
+								</dl>
+
+								<!-- Right column -->
+								<div class="story">
+									<p class="summary">
+										A web-based analytics dashboard for monitoring and analyzing 911 emergency reports by barangay, report type, and severity. Contributed to dashboard UI components, charts, and map functionality.
+									</p>
+
+									<h4>What I did</h4>
+									<ul class="list">
+										<li>Developed dashboard components featuring data visualizations and geographic mapping using ApexCharts and Leaflet.</li>
+										<li>Manually tested growth rate and total report components by verifying calculations, checking updates after adding or deleting reports, and validating monthly filters.</li>
+										<li>Identified missing barangay border lines, investigated duplicate entries and missing geographic data in the GeoJSON file, and corrected the dataset by manually defining missing boundaries using a map visualization tool.</li>
+									</ul>
+									<!-- <ul class="links">
+										<li>
+											<a
+												class="button button-outline"
+												href="https://github.com/your-username/internship-project"
+												target="_blank"
+												rel="noopener noreferrer">Source code</a
+											>
+										</li>
+									</ul> -->
+								</div>
+							</div>
+
+							<Swiper options={astroSwiperOptions.options}>
+								<SwiperWrapper>
+									<SwiperSlide class="shot"> <img src={`src/assets/Projects/911-Dashboard/mainPage.png`} alt="Dashboard of the internship project" loading="lazy" /> </SwiperSlide>
+									<SwiperSlide class="shot"> <img src={`src/assets/Projects/911-Dashboard/mapPage.png`} alt="Map page of the internship project" loading="lazy" />
+									</SwiperSlide>
+								</SwiperWrapper>
+								<SwiperButtonNext/>
+								<SwiperButtonPrev/>
+							</Swiper>
+
+							<!-- ---------- TEST CASES ---------- 
+							<section class="tests-block" id="internship-tests" aria-labelledby="internship-tests-title">
+								<h4 id="internship-tests-title" class="tests-title">Test cases</h4>
+
+								<p class="tests-summary">
+									<strong>5 test cases</strong>
+									<span class="counts">
+										<span class="count pass"><span class="dot" aria-hidden="true"></span>3 passed</span>
+										<span class="count fixed"><span class="dot" aria-hidden="true"></span>2 fixed</span>
+									</span>
+								</p>
+
+								<table>
+									<caption class="sr-only">Test cases for the internship project</caption>
+									<thead>
+										<tr>
+											<th scope="col">ID</th>
+											<th scope="col">Test case</th>
+											<th scope="col">Expected result</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr>
+											<td class="id">TC-01</td>
+											<td class="title">Log in with valid credentials</td>
+											<td data-label="Expected">User lands on the dashboard.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-02</td>
+											<td class="title">Log in with a wrong password</td>
+											<td data-label="Expected">An error message appears and no session is created.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-03</td>
+											<td class="title">
+												Submit the form with a required field empty
+												<p class="note">
+													Found: the form saved a blank record. Fixed by adding server-side validation.
+												</p>
+											</td>
+											<td data-label="Expected">The field shows an error and nothing is saved.</td>
+											<td data-label="Status">
+												<span class="status fixed"><span class="dot" aria-hidden="true"></span>Fixed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-04</td>
+											<td class="title">
+												Open a record that another user deleted
+												<p class="note">Found: an unhandled exception. Fixed with a 404 response.</p>
+											</td>
+											<td data-label="Expected">A clear "not found" page, not a server error.</td>
+											<td data-label="Status">
+												<span class="status fixed"><span class="dot" aria-hidden="true"></span>Fixed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-05</td>
+											<td class="title">Export a report with no data</td>
+											<td data-label="Expected">
+												A file with headers only, or a message that there is nothing to export.
+											</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</section>-->
+						</article>
+
+						<!-- ---------- PROJECT 2: THESIS ---------- -->
+						<article class="project" id="thesis" aria-labelledby="thesis-title">
+							<header>
+								<p class="kind">Thesis project</p>
+								<h3 id="thesis-title">Swapii - Barter Management System</h3>
+							</header>
+
+							<div class="body">
+								<dl class="facts">
+									<div>
+										<dt>Role</dt>
+										<dd>Project Lead</dd>
+									</div>
+									<div>
+										<dt>Built with</dt>
+										<dd>
+											<ul class="stack">
+												<li>Vue.js</li>
+												<li>Inertia.js</li>
+												<li>Laravel</li>
+												<li>Tailwind CSS</li>
+											</ul>
+										</dd>
+									</div>
+								</dl>
+
+								<div class="story">
+									<p class="summary">
+										A web-based barter management system developed to facilitate the exchange of unused school items between users. Contributed to project documentation, frontend development, and user acceptance testing.
+									</p>
+
+									<h4>What I did</h4>
+									<ul class="list">
+										<li>Prepared the Software Requirements Specification (SRS) and Software Design Document (SDD).</li>
+										<li>Assisted with making the frontend responsive for desktop and mobile screens.</li>
+										<li>Conducted User Acceptance Testing (UAT), documented user feedback, and compiled survey responses in Excel, using charts to summarize the results.</li>
+									</ul>
+								</div>
+							</div>
+
+							<Swiper options={astroSwiperOptions.options}>
+								<SwiperWrapper>
+									<SwiperSlide class="shot"> <img src={`src/assets/Projects/Swapii/image3.png`} alt="Dashboard of swapii" loading="lazy" /> </SwiperSlide>
+									<SwiperSlide class="shot"> <img src={`src/assets/Projects/Swapii/image2.png`} alt="Item page of swapii" loading="lazy" />
+									</SwiperSlide>
+									<SwiperSlide class="shot"> <img src={`src/assets/Projects/Swapii/image5.png`} alt="Chatbox of swapii" loading="lazy" />
+									</SwiperSlide>
+								</SwiperWrapper>
+								<SwiperButtonNext/>
+								<SwiperButtonPrev/>
+							</Swiper>
+							<!-- <section class="tests-block" id="thesis-tests" aria-labelledby="thesis-tests-title">
+								<h4 id="thesis-tests-title" class="tests-title">Test cases</h4>
+
+								<p class="tests-summary">
+									<strong>4 test cases</strong>
+									<span class="counts">
+										<span class="count pass"><span class="dot" aria-hidden="true"></span>3 passed</span>
+										<span class="count fixed"><span class="dot" aria-hidden="true"></span>1 fixed</span>
+									</span>
+								</p>
+
+								<table>
+									<caption class="sr-only">Test cases for the thesis project</caption>
+									<thead>
+										<tr>
+											<th scope="col">ID</th>
+											<th scope="col">Test case</th>
+											<th scope="col">Expected result</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="id">TC-01</td>
+											<td class="title">Register a new account</td>
+											<td data-label="Expected">Account is created and a confirmation is shown.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-02</td>
+											<td class="title">Register with an email that already exists</td>
+											<td data-label="Expected">The user is told the email is taken.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-03</td>
+											<td class="title">
+												Upload a file of an unsupported type
+												<p class="note">
+													Found: the file was accepted and failed later. Fixed by checking the type on
+													upload.
+												</p>
+											</td>
+											<td data-label="Expected">
+												The upload is rejected with a message that names the allowed types.
+											</td>
+											<td data-label="Status">
+												<span class="status fixed"><span class="dot" aria-hidden="true"></span>Fixed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-04</td>
+											<td class="title">Use the app on a phone-sized screen</td>
+											<td data-label="Expected">Every page is usable without sideways scrolling.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</section> -->
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- ===================== ABOUT ===================== -->
+			<section id="about" class="section" aria-labelledby="about-title">
+				<div class="wrap">
+					<h2 id="about-title">About</h2>
+
+					<div class="about">
+						<div class="about-text">
+							<p>
+								I finished my Computer Science degree at the University of Baguio in June 2025. My
+								coursework and projects centered on software development, and testing became the part of the
+								work I enjoyed most: following a happy path and finding bugs.
+							</p>
+							<p>
+								I like finding issues and contribute to a team that makes no mistakes.
+							</p>
+						</div>
+
+						<dl class="about-facts">
+							<div>
+								<dt>Education</dt>
+								<dd>BS Computer Science, University of Baguio</dd>
+							</div>
+							<div>
+								<dt>Based in</dt>
+								<dd>Nueva Ecija, Philippines</dd>
+							</div>
+							<div>
+								<dt>Looking for</dt>
+								<dd>QA, software testing, application support</dd>
+							</div>
+						</dl>
+					</div>
+
+					<div class="skills">
+						<div>
+							<h3>Testing</h3>
+							<ul>
+								<li>Test case writing</li>
+								<li>Manual testing</li>
+								<li>Bug reporting</li>
+								<li>Regression testing</li>
+							</ul>
+						</div>
+						<div>
+							<h3>Development</h3>
+							<ul>
+								<li>Laravel</li>
+								<li>Vue.js</li>
+								<li>Astro</li>
+								<li>JavaScript</li>
+								<li>PHP</li>
+							</ul>
+						</div>
+						<div>
+							<h3>Tools</h3>
+							<ul>
+								<li>Git and GitHub</li>
+								<li>Postman</li>
+								<li>MySQL</li>
+								<li>Jira</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ===================== CONTACT ===================== -->
+			<section id="contact" class="section" aria-labelledby="contact-title">
+				<div class="wrap">
+					<h2 id="contact-title">Contact</h2>
+					<p class="section-intro">
+						I am looking for QA, software testing, and application support roles. Email is the quickest way to
+						reach me.
+					</p>
+					<ul class="contact-links">
+						<!-- replace the email and profile links. -->
+						<li><a class="button button-solid" href="mailto:you@example.com">Email me</a></li>
+						<li>
+							<a
+								class="button button-outline"
+								href="https://github.com/your-username"
+								target="_blank"
+								rel="noopener noreferrer">GitHub</a
+							>
+						</li>
+						<li>
+							<a
+								class="button button-outline"
+								href="https://www.linkedin.com/in/your-username"
+								target="_blank"
+								rel="noopener noreferrer">LinkedIn</a
+							>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrap">
+				<p>&copy; {year} Andre Marin</p>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	   /* Colors and fonts */
+	:root {
+		--bg: #f1f6f5; /* page background */
+		--surface: #ffffff; /* table and tag background */
+		--ink: #0e2b2d; /* main text */
+		--muted: #4f6665; /* secondary text */
+		--line: #cfdddb; /* thin borders */
+		--accent: #17787a; /* teal: links, buttons, highlights */
+		--accent-ink: #ffffff; /* text on top of the accent color */
+
+		--hero-bg: #17787a; /* big teal block at the top */
+		--hero-ink: #f4fbfa;
+		--hero-muted: #d3ecea;
+
+		/* Test status colors. Each status also has a text label. */
+		--pass: #1b7f4b;
+		--fixed: #8a5a00;
+		--fail: #b3261e;
+		--blocked: #5f6b6a;
+
+		--font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+		--font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+		--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+
+		--radius: 10px;
+		--gutter: 1rem; /* space at the left and right edges on small screens */
+		color-scheme: light dark;
+	}
+
+	/* If device is set to dark mode */
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--bg: #0c1d1f;
+			--surface: #13292b;
+			--ink: #e6f1ef;
+			--muted: #9db5b2;
+			--line: #26403f;
+			--accent: #5cc7c4;
+			--accent-ink: #06191a;
+
+			--hero-bg: #0f4f51;
+			--hero-ink: #f1faf9;
+			--hero-muted: #b9dcda;
+
+			--pass: #4cc38a;
+			--fixed: #e3b341;
+			--fail: #ff8a80;
+			--blocked: #9db5b2;
+		}
+	}
+
+	/* Default. border-box makes width include padding */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
+	body {
+		margin: 0;
+		background: var(--bg);
+		color: var(--ink);
+		font-family: var(--font-body);
+		font-size: 1.0625rem;
+		line-height: 1.6;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		line-height: 1.1;
+		margin: 0;
+		letter-spacing: -0.02em;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		color: var(--accent);
+		text-underline-offset: 0.2em;
+	}
+
+	:focus-visible {
+		outline: 3px solid var(--accent);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+
+	.wrap {
+		width: min(100% - 2 * var(--gutter), 64rem);
+		margin-inline: auto;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.skip-link {
+		position: absolute;
+		left: var(--gutter);
+		top: -4rem;
+		padding: 0.6rem 1rem;
+		background: var(--ink);
+		color: var(--bg);
+		border-radius: var(--radius);
+		z-index: 10;
+	}
+
+	.skip-link:focus {
+		top: var(--gutter);
+	}
+
+	/* Buttons */
+	.button {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.65rem 1.1rem;
+		border-radius: var(--radius);
+		font-weight: 600;
+		text-decoration: none;
+		border: 2px solid transparent;
+		transition:
+			background-color 0.15s,
+			color 0.15s,
+			border-color 0.15s;
+	}
+
+	.button-solid {
+		background: var(--accent);
+		color: var(--accent-ink);
+	}
+
+	.button-solid:hover {
+		background: var(--ink);
+		color: var(--bg);
+	}
+
+	.button-outline {
+		border-color: var(--line);
+		color: var(--ink);
+	}
+
+	.button-outline:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+
+	/* Header and navigation */
+	.site-header {
+		background: var(--hero-bg);
+		color: var(--hero-ink);
+	}
+
+	.bar {
+		display: flex; 
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1.5rem;
+		padding-block: 1rem;
+	}
+
+	.brand {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.1rem;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.site-header nav ul {
+		display: flex;
+		gap: 1.25rem;
+	}
+
+	.site-header nav a {
+		color: var(--hero-muted);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.site-header nav a:hover {
+		color: var(--hero-ink);
+		text-decoration: underline;
+		text-underline-offset: 0.3em;
+	}
+
+	.site-header :focus-visible,
+	.hero :focus-visible {
+		outline-color: var(--hero-ink);
+	}
+
+	
+	.hero {
+		background: var(--hero-bg);
+		color: var(--hero-ink);
+		padding-block: clamp(3rem, 10vw, 7rem) clamp(3.5rem, 10vw, 7.5rem);
+	}
+
+	.hero h1 {
+		font-size: clamp(3.25rem, 11vw, 7.5rem);
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		line-height: 0.95;
+	}
+
+	.role {
+		margin-top: 1.25rem;
+		font-family: var(--font-display);
+		font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+		font-weight: 500;
+		color: var(--hero-muted);
+	}
+
+	.intro {
+		margin-top: 1.5rem;
+		max-width: 56ch;
+		font-size: 1.15rem;
+		line-height: 1.55;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2.25rem;
+	}
+
+	.hbtn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.7rem 1.2rem;
+		border: 2px solid var(--hero-ink);
+		border-radius: var(--radius);
+		font-weight: 600;
+		text-decoration: none;
+		transition:
+			background-color 0.15s,
+			color 0.15s;
+	}
+
+	.hbtn-solid {
+		background: var(--hero-ink);
+		color: var(--hero-bg);
+	}
+
+	.hbtn-solid:hover {
+		background: transparent;
+		color: var(--hero-ink);
+	}
+
+	.hbtn-outline {
+		color: var(--hero-ink);
+	}
+
+	.hbtn-outline:hover {
+		background: var(--hero-ink);
+		color: var(--hero-bg);
+	}
+
+	/* Hero animation */
+	@media (prefers-reduced-motion: no-preference) {
+		.hero .wrap > * {
+			animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+		}
+		.hero .wrap > :nth-child(2) {
+			animation-delay: 0.08s;
+		}
+		.hero .wrap > :nth-child(3) {
+			animation-delay: 0.16s;
+		}
+		.hero .wrap > :nth-child(4) {
+			animation-delay: 0.24s;
+		}
+	}
+
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(14px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	/* Sections */
+	.section {
+		padding-block: clamp(3rem, 8vw, 5.5rem);
+	}
+	.section + .section {
+		border-top: 1px solid var(--line);
+	}
+
+	.section h2 {
+		font-size: clamp(1.9rem, 4vw, 2.5rem);
+		font-weight: 700;
+	}
+
+	.section-intro {
+		margin-top: 0.75rem;
+		color: var(--muted);
+		max-width: 52ch;
+	}
+
+	/* Projects */
+	.project-list {
+		margin-top: clamp(2.5rem, 6vw, 4rem);
+	}
+
+	.project + .project {
+		margin-top: clamp(3.5rem, 8vw, 5.5rem);
+	}
+
+	.kind {
+		display: inline-block;
+		padding-left: 0.75rem;
+		border-left: 4px solid var(--accent);
+		color: var(--accent);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	.project h3 {
+		margin-top: 0.75rem;
+		font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+		font-weight: 700;
+		max-width: 28ch;
+	}
+
+	/* Body Column in Projects */
+	.body {
+		display: grid;
+		gap: 2rem;
+		margin-top: 1.75rem;
+	}
+
+	@media (min-width: 52rem) {
+		.body {
+			grid-template-columns: 15rem 1fr;
+			gap: 3rem;
+		}
+	}
+
+	.facts,
+	.about-facts {
+		display: grid;
+		gap: 1rem;
+		margin: 0;
+		align-content: start;
+	}
+
+	.facts div,
+	.about-facts div {
+		border-top: 1px solid var(--line);
+		padding-top: 0.6rem;
+	}
+
+	dt {
+		color: var(--muted);
+		font-size: 0.92rem;
+		font-weight: 500;
+	}
+
+	dd {
+		margin: 0.1rem 0 0;
+		font-weight: 500;
+	}
+
+	.stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin-top: 0.25rem;
+	}
+
+	.stack li {
+		padding: 0.15rem 0.6rem;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--surface);
+		font-size: 0.92rem;
+		font-weight: 500;
+	}
+
+	.story {
+		max-width: 62ch;
+	}
+
+	.summary {
+		font-size: 1.2rem;
+		line-height: 1.5;
+	}
+
+	.story h4 {
+		margin-top: 1.75rem;
+		margin-bottom: 0.5rem;
+		font-size: 1.1rem;
+		font-weight: 700;
+	}
+
+	.list {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	/* Custom bullet */
+	.list li {
+		position: relative;
+		padding-left: 1.25rem;
+	}
+
+	.list li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.7em;
+		width: 0.5rem;
+		height: 2px;
+		background: var(--accent);
+	}
+
+	.links,
+	.contact-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 1.75rem;
+	}
+
+	.shot {
+		margin: 2rem 0 0;
+	}
+
+	.shot img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+	}
+
+	/* TABLE TBD */
+	.tests-block {
+		margin-top: 2.5rem;
+	}
+
+	.tests-title {
+		margin-bottom: 0.5rem;
+		font-size: 1.35rem;
+		font-weight: 700;
+	}
+
+	.tests-summary {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.25rem 1.25rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.counts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1rem;
+		font-size: 0.95rem;
+	}
+
+	.count,
+	.status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.status {
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	/* Small colored circle. */
+	.dot {
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 50%;
+		background: currentColor;
+		flex: none;
+	}
+
+	.pass {
+		color: var(--pass);
+	}
+	.fixed {
+		color: var(--fixed);
+	}
+	.fail {
+		color: var(--fail);
+	}
+	.blocked {
+		color: var(--blocked);
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		overflow: hidden;
+		font-size: 0.97rem;
+	}
+
+	th,
+	td {
+		text-align: left;
+		vertical-align: top;
+		padding: 0.75rem 1rem;
+	}
+
+	thead th {
+		font-weight: 600;
+		color: var(--muted);
+		background: var(--bg);
+		border-bottom: 1px solid var(--line);
+	}
+
+	tbody tr + tr td {
+		border-top: 1px solid var(--line);
+	}
+
+	.id {
+		font-family: var(--font-mono);
+		font-size: 0.88rem;
+		color: var(--muted);
+		white-space: nowrap;
+	}
+
+	.title {
+		font-weight: 600;
+	}
+
+	.note {
+		margin-top: 0.35rem;
+		font-weight: 400;
+		font-size: 0.92rem;
+		color: var(--muted);
+		max-width: 48ch;
+	}
+
+	/* Table responsiveness for phone screens */
+	@media (max-width: 42rem) {
+		thead {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+		}
+
+		tbody tr {
+			display: grid;
+			gap: 0.35rem;
+			padding: 0.9rem 1rem;
+		}
+
+		tbody tr + tr {
+			border-top: 1px solid var(--line);
+		}
+
+		tbody tr + tr td {
+			border-top: 0;
+		}
+
+		td {
+			padding: 0;
+		}
+
+		td[data-label]::before {
+			content: attr(data-label) ': ';
+			color: var(--muted);
+			font-weight: 500;
+		}
+	}
+	.about {
+		display: grid;
+		gap: 2.5rem;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 52rem) {
+		.about {
+			grid-template-columns: 1fr 18rem;
+			gap: 4rem;
+		}
+	}
+
+	.about-text {
+		display: grid;
+		gap: 1rem;
+		max-width: 62ch;
+	}
+
+	.skills {
+		display: grid;
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+
+	@media (min-width: 40rem) {
+		.skills {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.skills h3 {
+		font-size: 1.1rem;
+		font-weight: 700;
+		margin-bottom: 0.6rem;
+	}
+
+	.skills ul {
+		display: grid;
+		gap: 0.3rem;
+	}
+
+	.skills li {
+		color: var(--muted);
+	}
+	.site-footer {
+		padding-block: 2rem;
+		border-top: 1px solid var(--line);
+		color: var(--muted);
+		font-size: 0.95rem;
+	}
+</style>
