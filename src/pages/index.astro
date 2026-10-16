@@ -32,14 +32,14 @@ const astroSwiperOptions: AstroSwiperType = {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- title shows on the browser tab and in Google results. -->
-		<title>Andre Marin | Software QA and implementation</title>
+		<title>Andre Marin | QA Tester and Web Developer</title>
 		<meta
 			name="description"
-			content="Computer science graduate who builds web applications and tests them closely. Laravel, Vue.js, React."
+			content="Computer science graduate who builds web applications and enjoys debugging, troubleshooting, and finding issues. Open to QA testing, application support, and web development roles."
 		/>
 		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 
-		<!-- Two Google Fonts: Bricolage Grotesque (headings) and Instrument Sans (body text). -->
+		<!-- Google Fonts: Bricolage Grotesque and Instrument Sans. -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -70,13 +70,12 @@ const astroSwiperOptions: AstroSwiperType = {
 			<section class="hero" aria-labelledby="hero-title">
 				<div class="wrap">
 					<h1 id="hero-title">Andre Marin</h1>
-					<p class="role">Software QA and implementation</p>
+					<p class="role">QA Tester and Web Developer</p>
 					<p class="intro">
-						I’m a computer science graduate who builds web applications and tests them closely. I enjoy debugging, troubleshooting, and finding issues wherever they hide.
+						I’m a computer science graduate who builds web applications and enjoys debugging, troubleshooting, and finding issues.
 					</p>
 					<ul class="actions">
 						<li><a class="hbtn hbtn-solid" href="#projects">See projects</a></li>
-						<!-- <li><a class="hbtn hbtn-outline" href="#internship-tests">test</a></li> -->
 						<li><a class="hbtn hbtn-outline" href={`${base}/Andre Marin Resume.pdf`}>Download resume</a></li>
 						
 					</ul>
@@ -128,19 +127,9 @@ const astroSwiperOptions: AstroSwiperType = {
 									<h4>What I did</h4>
 									<ul class="list">
 										<li>Developed dashboard components featuring data visualizations and geographic mapping using ApexCharts and Leaflet.</li>
-										<li>Manually tested growth rate and total report components by verifying calculations, checking updates after adding or deleting reports, and validating monthly filters.</li>
+										<li>Manually tested dashboard components and charts to verify data accuracy, validate monthly filters, and confirm correct updates after adding or deleting reports.</li>
 										<li>Identified missing barangay border lines, investigated duplicate entries and missing geographic data in the GeoJSON file, and corrected the dataset by manually defining missing boundaries using a map visualization tool.</li>
 									</ul>
-									<!-- <ul class="links">
-										<li>
-											<a
-												class="button button-outline"
-												href="https://github.com/your-username/internship-project"
-												target="_blank"
-												rel="noopener noreferrer">Source code</a
-											>
-										</li>
-									</ul> -->
 								</div>
 							</div>
 
@@ -154,83 +143,6 @@ const astroSwiperOptions: AstroSwiperType = {
 								<SwiperButtonPrev/>
 							</Swiper>
 
-							<!-- ---------- TEST CASES ---------- 
-							<section class="tests-block" id="internship-tests" aria-labelledby="internship-tests-title">
-								<h4 id="internship-tests-title" class="tests-title">Test cases</h4>
-
-								<p class="tests-summary">
-									<strong>5 test cases</strong>
-									<span class="counts">
-										<span class="count pass"><span class="dot" aria-hidden="true"></span>3 passed</span>
-										<span class="count fixed"><span class="dot" aria-hidden="true"></span>2 fixed</span>
-									</span>
-								</p>
-
-								<table>
-									<caption class="sr-only">Test cases for the internship project</caption>
-									<thead>
-										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">Test case</th>
-											<th scope="col">Expected result</th>
-											<th scope="col">Status</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<tr>
-											<td class="id">TC-01</td>
-											<td class="title">Log in with valid credentials</td>
-											<td data-label="Expected">User lands on the dashboard.</td>
-											<td data-label="Status">
-												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-02</td>
-											<td class="title">Log in with a wrong password</td>
-											<td data-label="Expected">An error message appears and no session is created.</td>
-											<td data-label="Status">
-												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-03</td>
-											<td class="title">
-												Submit the form with a required field empty
-												<p class="note">
-													Found: the form saved a blank record. Fixed by adding server-side validation.
-												</p>
-											</td>
-											<td data-label="Expected">The field shows an error and nothing is saved.</td>
-											<td data-label="Status">
-												<span class="status fixed"><span class="dot" aria-hidden="true"></span>Fixed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-04</td>
-											<td class="title">
-												Open a record that another user deleted
-												<p class="note">Found: an unhandled exception. Fixed with a 404 response.</p>
-											</td>
-											<td data-label="Expected">A clear "not found" page, not a server error.</td>
-											<td data-label="Status">
-												<span class="status fixed"><span class="dot" aria-hidden="true"></span>Fixed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-05</td>
-											<td class="title">Export a report with no data</td>
-											<td data-label="Expected">
-												A file with headers only, or a message that there is nothing to export.
-											</td>
-											<td data-label="Status">
-												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</section>-->
 						</article>
 
 						<!-- ---------- PROJECT 2: THESIS ---------- -->
@@ -284,71 +196,7 @@ const astroSwiperOptions: AstroSwiperType = {
 								<SwiperButtonNext/>
 								<SwiperButtonPrev/>
 							</Swiper>
-							<!-- <section class="tests-block" id="thesis-tests" aria-labelledby="thesis-tests-title">
-								<h4 id="thesis-tests-title" class="tests-title">Test cases</h4>
-
-								<p class="tests-summary">
-									<strong>4 test cases</strong>
-									<span class="counts">
-										<span class="count pass"><span class="dot" aria-hidden="true"></span>3 passed</span>
-										<span class="count fixed"><span class="dot" aria-hidden="true"></span>1 fixed</span>
-									</span>
-								</p>
-
-								<table>
-									<caption class="sr-only">Test cases for the thesis project</caption>
-									<thead>
-										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">Test case</th>
-											<th scope="col">Expected result</th>
-											<th scope="col">Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="id">TC-01</td>
-											<td class="title">Register a new account</td>
-											<td data-label="Expected">Account is created and a confirmation is shown.</td>
-											<td data-label="Status">
-												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-02</td>
-											<td class="title">Register with an email that already exists</td>
-											<td data-label="Expected">The user is told the email is taken.</td>
-											<td data-label="Status">
-												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-03</td>
-											<td class="title">
-												Upload a file of an unsupported type
-												<p class="note">
-													Found: the file was accepted and failed later. Fixed by checking the type on
-													upload.
-												</p>
-											</td>
-											<td data-label="Expected">
-												The upload is rejected with a message that names the allowed types.
-											</td>
-											<td data-label="Status">
-												<span class="status fixed"><span class="dot" aria-hidden="true"></span>Fixed</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="id">TC-04</td>
-											<td class="title">Use the app on a phone-sized screen</td>
-											<td data-label="Expected">Every page is usable without sideways scrolling.</td>
-											<td data-label="Status">
-												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</section> -->
+							
 						</article>
 					</div>
 				</div>
@@ -362,7 +210,7 @@ const astroSwiperOptions: AstroSwiperType = {
 					<div class="about">
 						<div class="about-text">
 							<p>
-								I finished my Computer Science degree at the University of Baguio in June 2025. My coursework and projects centered on software development, and during my internship I worked as a developer on a web-based 911 dashboard. Along the way, testing became the part I enjoyed most: going beyond the happy path to see what breaks, and helping a team catch issues before users do.
+								I finished my Computer Science degree at the University of Baguio in June 2025. My coursework and projects centered on software development, and during my internship I worked as a developer on a web-based 911 dashboard. Along the way, testing became the part I enjoyed most.
 							</p>
 						</div>
 
@@ -373,7 +221,7 @@ const astroSwiperOptions: AstroSwiperType = {
 							</div>
 							<div>
 								<dt>Based in</dt>
-								<dd>Nueva Ecija, Philippines</dd>
+								<dd>Bongabon, Nueva Ecija, Philippines</dd>
 							</div>
 						</dl>
 					</div>
@@ -416,16 +264,14 @@ const astroSwiperOptions: AstroSwiperType = {
 				<div class="wrap">
 					<h2 id="contact-title">Contact</h2>
 					<p class="section-intro">
-						I am looking for QA, software testing, and application support roles. Email is the quickest way to
-						reach me.
+						I am looking for QA testing, application support, and web development roles. The quickest way to reach me is by email at <a href="mailto:ccandremarin@gmail.com">ccandremarin@gmail.com</a>
 					</p>
 					<ul class="contact-links">
-						<!-- replace the email and profile links. -->
-						<li><a class="button button-solid" href="mailto:you@example.com">Email me</a></li>
+						<li><a class="button button-solid" href="mailto:ccandremarin@gmail.com">Email me</a></li>
 						<li>
 							<a
 								class="button button-outline"
-								href="https://github.com/your-username"
+								href="https://github.com/ccandre"
 								target="_blank"
 								rel="noopener noreferrer">GitHub</a
 							>
