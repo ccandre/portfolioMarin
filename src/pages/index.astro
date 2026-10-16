@@ -3,8 +3,14 @@
 const year = new Date().getFullYear();
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+import {Image} from 'astro:assets';
 import { Swiper, SwiperWrapper, SwiperSlide, SwiperButtonNext, SwiperButtonPrev } from "astro-swiper";
 import type { AstroSwiperType } from "astro-swiper";
+import dashboardImg from '../assets/Projects/911-Dashboard/mainPage.png';
+import mapImg from '../assets/Projects/911-Dashboard/mapPage.png';
+import swapii3 from '../assets/Projects/Swapii/image3.png';
+import swapii2 from '../assets/Projects/Swapii/image2.png';
+import swapii5 from '../assets/Projects/Swapii/image5.png';
 
 const astroSwiperOptions: AstroSwiperType = {
   options: {
@@ -135,8 +141,8 @@ const astroSwiperOptions: AstroSwiperType = {
 
 							<Swiper options={astroSwiperOptions.options}>
 								<SwiperWrapper>
-									<SwiperSlide class="shot"> <img src={`src/assets/Projects/911-Dashboard/mainPage.png`} alt="Dashboard of the internship project" loading="lazy" /> </SwiperSlide>
-									<SwiperSlide class="shot"> <img src={`src/assets/Projects/911-Dashboard/mapPage.png`} alt="Map page of the internship project" loading="lazy" />
+									<SwiperSlide class="shot"> <Image src={dashboardImg} alt="Dashboard of the internship project"/> </SwiperSlide>
+									<SwiperSlide class="shot"> <Image src={mapImg} alt="Map page of the internship project"/>
 									</SwiperSlide>
 								</SwiperWrapper>
 								<SwiperButtonNext/>
@@ -187,10 +193,10 @@ const astroSwiperOptions: AstroSwiperType = {
 
 							<Swiper options={astroSwiperOptions.options}>
 								<SwiperWrapper>
-									<SwiperSlide class="shot"> <img src={`src/assets/Projects/Swapii/image3.png`} alt="Dashboard of swapii" loading="lazy" /> </SwiperSlide>
-									<SwiperSlide class="shot"> <img src={`src/assets/Projects/Swapii/image2.png`} alt="Item page of swapii" loading="lazy" />
+									<SwiperSlide class="shot"> <Image src={swapii3} alt="Dashboard of swapii"/> </SwiperSlide>
+									<SwiperSlide class="shot"> <Image src={swapii2} alt="Item page of swapii"/>
 									</SwiperSlide>
-									<SwiperSlide class="shot"> <img src={`src/assets/Projects/Swapii/image5.png`} alt="Chatbox of swapii" loading="lazy" />
+									<SwiperSlide class="shot"> <Image src={swapii5} alt="Chatbox of swapii"/>
 									</SwiperSlide>
 								</SwiperWrapper>
 								<SwiperButtonNext/>
