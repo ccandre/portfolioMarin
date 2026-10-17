@@ -16,14 +16,13 @@ const astroSwiperOptions: AstroSwiperType = {
   options: {
     loop: true,
 	lazyPreload: true,
-	// grabCursor: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
 	autoplay: {
-		delay: 2000,
-		disableOnInteraction: false,
+		delay: 8000,
+		disableOnInteraction: true,
 		waitForTransition: false,
 	},
   },
@@ -203,6 +202,83 @@ const astroSwiperOptions: AstroSwiperType = {
 								<SwiperButtonPrev/>
 							</Swiper>
 							
+							<!-- ---------- TEST CASES ---------- -->
+							<section class="tests-block" id="swapii-tests" aria-labelledby="swapii-tests-title">
+								<h4 id="swapii-tests-title" class="tests-title">Swapii Test Cases</h4>
+
+								<p class="tests-note">
+									Sample UAT cases that participants completed. During development, I also tested invalid inputs, such as empty or incorrect form fields.
+								</p>
+
+								<table>
+									<caption class="sr-only">Test cases for Swapii capstone project</caption>
+									<thead>
+										<tr>
+											<th scope="col">ID</th>
+											<th scope="col">Test case</th>
+											<th scope="col">Test steps</th>
+											<th scope="col">Expected result</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr>
+											<td class="id">TC-01</td>
+											<td class="title">Create Post</td>
+											<td class="steps">
+												<ol class="steps-list">
+													<li>Go to the <strong>Posts</strong> page.</li>
+													<li>Click <strong>Add New Post</strong>.</li>
+													<li>Fill in the Add Post form with valid details.</li>
+													<li>Click <strong>Submit</strong>.</li>
+													<li>Check that a notification says the post was added.</li>
+												</ol>
+											</td>
+											<td data-label="Expected">The user can create a post for trade.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-02</td>
+											<td class="title">Request trade</td>
+											<td class="steps">
+												<ol class="steps-list">
+													<li>Go to the <strong>Home</strong> page.</li>
+													<li>Choose an item card and click <strong>Request Trade</strong>.</li>
+													<li>Fill in the trade request form with valid details.</li>
+													<li>Click <strong>Submit</strong>.</li>
+													<li>Check that a confirmation says the trade request was added.</li>
+												</ol>
+											</td>
+											<td data-label="Expected">The user can request a trade.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="id">TC-03</td>
+											<td class="title">
+												Send message
+											</td>
+											<td class="steps">
+												<ol class="steps-list">
+													<li>Click the message icon at the top right of the navigation bar.</li>
+													<li>Open a chat with another user.</li>
+													<li>Type a message and click <strong>Send</strong>.</li>
+													<li>Check that the message appears in the chat with its date and time below it.</li>
+												</ol>
+											</td>
+											<td data-label="Expected">The message is sent to the recipient.</td>
+											<td data-label="Status">
+												<span class="status pass"><span class="dot" aria-hidden="true"></span>Passed</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</section>
+
 						</article>
 					</div>
 				</div>
@@ -786,20 +862,17 @@ const astroSwiperOptions: AstroSwiperType = {
 		font-size: 1.35rem;
 		font-weight: 700;
 	}
-
-	.tests-summary {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: baseline;
-		gap: 0.25rem 1.25rem;
-		margin-bottom: 0.75rem;
+	.tests-note {
+		margin: 0.25rem 0 1rem;
+		font-size: 0.9rem;
+		opacity: 0.8;
 	}
-
-	.counts {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.25rem 1rem;
-		font-size: 0.95rem;
+	.steps-list {
+		margin: 0;
+		padding-left: 1.25rem;
+	}
+	.steps-list li + li {
+		margin-top: 0.25rem;
 	}
 
 	.count,
